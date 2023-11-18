@@ -8,6 +8,8 @@ import json
 from contact import Contact
 from event import Event
 import functions
+import os
+import platform
 
 # Iterators for the different list
 contactListIterator = 0
@@ -81,14 +83,13 @@ while running:
             # Outputting choices to do with the contact list
             print("Which of the following would you like to do?")
             print("1) View all information about a contact")
-            print("2) Correct a contact's information")
-            print("3) Update last date of communication with a contact")
-            print("4) Return to main menu")
-            menu_choice = input("Please enter a value from 1 to 4: ")
+            print("2) Update last date of communication with a contact")
+            print("3) Return to main menu")
+            menu_choice = input("Please enter a value from 1 to 3: ")
             print()
 
             # Validating menu_choice
-            menu_choice = functions.menu_validation(menu_choice, 1, 4)
+            menu_choice = functions.menu_validation(menu_choice, 1, 3)
 
             match menu_choice:
                 case 1:
@@ -108,16 +109,40 @@ while running:
                     print()
 
                 case 2:
+                    functions.print_all_contacts(listContacts)
                     menu_choice = input("Please enter the UserID of the contact whose "
-                                "information you would like to correct: ")
+                                        "information you would like to see: ")
                     print()
 
                     # Validating menu_choice
                     menu_choice = functions.menu_validation(menu_choice, 0,
                                                             int(listContacts[len(listContacts) - 1].user_id))
 
+                    old_date = listContacts[menu_choice].last_communication
+                    new_date = input("Using the format \'YYYY-MM-DD\' Please enter the date of last "
+                                     "communication with {0} {1}: ".format(listContacts[menu_choice].first_name,
+                                                                           listContacts[menu_choice].last_name))
+                    listContacts[menu_choice].last_communication(new_date)
+                    print("The date of last communication with {0} {1} has been updated from {2} to {3}.".format(
+                        listContacts[menu_choice].first_name, listContacts[menu_choice].last_name,
+                        old_date, new_date))
+                    wait_to_continue = input("Press enter to continue: ")
+                    print()
+
+                case 3:
+                    continue
+
                 case _:
                     print("Error in nested menu_choice from case 1 of primary menu_choice in primary while loop")
 
         case _:
             print("Error in match menu_choice in primary while loop")
+
+    # Clearing the console
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.systems('clear')
+
+print()
+print("Goodbye!")
