@@ -89,5 +89,3 @@ class Event:
                 for i in range(1, len(self.__action_items)):
                     print("\t\t\t\t {0}) {1}".format(i+1, self.__action_items[i]))
                     i = i + 1
-
-
