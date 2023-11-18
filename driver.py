@@ -62,4 +62,51 @@ while running:
     print("2) View your list of events")
     print("3) Update the last date of communication for a contact")
     print("4) Add action items to a given event")
+    print("5) Exit program")
+    menu_choice = input("Please enter a value from 1 to 5: ")
+    print()
 
+    # Validating menu_choice
+    menu_choice = functions.menu_validation(menu_choice, 1, 5)
+
+    # Following the chosen action
+    match menu_choice:
+        case 1:
+            # Outputting the list of contacts with their UserIDs and Names
+            print("UserID\tLast, First Name")
+            for contact in listContacts:
+                print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
+            print()
+
+            # Outputting choices to do with the contact list
+            print("Which of the following would you like to do?")
+            print("1) View all information about a contact")
+            print("2) Correct a contact's information")
+            print("3) Update last date of communication with a contact")
+            print("4) Return to main menu")
+            menu_choice = input("Please enter a value from 1 to 4: ")
+            print()
+
+            # Validating menu_choice
+            menu_choice = functions.menu_validation(menu_choice, 1, 4)
+
+            match menu_choice:
+                case 1:
+                    menu_choice = input("Please enter the UserID of the contact whose "
+                                        "information you would like to see: ")
+                    print()
+
+                    # Validating menu_choice
+                    menu_choice = functions.menu_validation(menu_choice, 0,
+                                                            int(listContacts[len(listContacts)-1].user_id))
+
+                    print("CONTACT INFO")
+                    print("---------------------")
+                    listContacts[menu_choice].contact_info()
+                    
+
+                case _:
+                    print("Error in nested menu_choice from case 1 of primary menu_choice in primary while loop")
+
+        case _:
+            print("Error in match menu_choice in primary while loop")

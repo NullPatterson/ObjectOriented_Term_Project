@@ -109,3 +109,4 @@ class Contact:
         print("Post Office Box:\t", self.__post_box)
         if self.__last_communication != None:
             print("Last Communication:\t", self.__last_communication)
+        print()
