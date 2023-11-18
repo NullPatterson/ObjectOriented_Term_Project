@@ -7,6 +7,7 @@
 import json
 from contact import Contact
 from event import Event
+import functions
 
 # Iterators for the different list
 contactListIterator = 0
@@ -46,4 +47,19 @@ for event in event_data['university_events']:
 event_file.close()
 
 # Debug statement to check event_info()
-listEvents[0].event_info()
+# listEvents[0].event_info()
+
+# Bool value to keep user interface open and that the application is running
+running = True
+# Value to track user menu choice.
+menu_choice = "0"
+
+# First time welcome statement
+print("Welcome what would you like to do today!")
+while running:
+    # Main menu
+    print("1) View your list of contacts")
+    print("2) View your list of events")
+    print("3) Update the last date of communication for a contact")
+    print("4) Add action items to a given event")
+
