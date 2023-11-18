@@ -45,3 +45,5 @@ for event in event_data['university_events']:
 # eventListIterator = 0  # Used to reset eventListIterator if used for debugging
 event_file.close()
 
+# Debug statement to check event_info()
+listEvents[0].event_info()
