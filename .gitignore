@@ -3,3 +3,5 @@
 .idea/ObjectOriented_Term_Project.iml
 .idea/ObjectOriented_Term_Project.iml
 *.xml
+__pycache__/contact.cpython-311.pyc
+*.pyc
