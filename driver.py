@@ -18,7 +18,7 @@ class Contact:
         self.__phone_number = phone_number
         self.__building = building
         self.__post_box = post_box
-        self.__last_communication = "0000-00-00"  # YYYY-MM-DD
+        self.__last_communication = None  # YYYY-MM-DD
 
     # Getters and Setters in case information needs to be updated
     @property
@@ -93,6 +93,16 @@ class Contact:
     def post_box(self, post_box):
         self.__post_box = post_box
 
+    @property
+    def last_communication(self):
+        return self.__last_communication
+
+    @last_communication.setter
+    def last_communication(self, last_communication):
+        self.__last_communication = last_communication
+
+    # Method to output all relevant information about the contact
+    
 
 class Event:
     def __init__(self, eventname, eventid, date, starttime, location, duration):
