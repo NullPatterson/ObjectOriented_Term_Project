@@ -9,7 +9,7 @@ class Event:
         self.__start_time = start_time  # Military time 00:00
         self.__location = location
         self.__duration = duration      # In hours
-        self.__action_items = []
+        self.__action_items = ["1", "2"]
 
     # Getters and Setters
     @property
@@ -62,28 +62,32 @@ class Event:
 
     # Method to view current Action Items
     def action_items(self):
+        i = 1
         print("Action items:")
         for item in self.__action_items:
-            print(" -{}".format(item))
+            print("\t{0}) {1}".format(i, item))
+            i = i + 1
 
     # Method to add action items to event
     def append_action_items(self, items):
         for item in items:
             self.__action_items.append(item)
 
-    def event_info(self, i):
-        print("Event Name:\t", self.__name)
-        print("Event ID:\t", self.__event_id)
-        print("Event Date:\t", self.__date)
-        print("Start Time:\t", self.__start_time)
-        print("Location:\t", self.__location)
-        print("Duration:\t", self.__duration)
+    def event_info(self):
+        print("Event Name:\t\t", self.__name)
+        print("Event ID:\t\t", self.__event_id)
+        print("Event Date:\t\t", self.__date)
+        print("Start Time:\t\t", self.__start_time)
+        print("Location:\t\t", self.__location)
+        print("Duration:\t\t", self.__duration, "hours")
         # Determining whether there are action items to print and if so how many
-        if len(self.__action_items) == 1:
-            print("Action Item:\t", self.__action_items[0])
-        elif len(self.__action_items) > 1:
-            print("Action Items:\t", self.__action_items[i])
-            i = i + 1
-            print("\t\t\t", self.action_items[i])
-            
+        if len(self.__action_items) > 0:
+            if len(self.__action_items) == 1:
+                print("Action Item:\t", self.__action_items[0])
+            elif len(self.__action_items) > 1:
+                print("Action Items:\t 1)", self.__action_items[0])
+                for i in range(1, len(self.__action_items)):
+                    print("\t\t\t\t {0}) {1}".format(i+1, self.__action_items[i]))
+                    i = i + 1
+
 
