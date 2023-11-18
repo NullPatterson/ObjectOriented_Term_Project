@@ -53,11 +53,14 @@ event_file.close()
 running = True
 # Value to track user menu choice.
 menu_choice = "0"
+# Used to pause the program until enter is pressed
+wait_to_continue = ""
 
 # First time welcome statement
 print("Welcome what would you like to do today!")
 while running:
     # Main menu
+    print("Main Menu:")
     print("1) View your list of contacts")
     print("2) View your list of events")
     print("3) Update the last date of communication for a contact")
@@ -73,10 +76,7 @@ while running:
     match menu_choice:
         case 1:
             # Outputting the list of contacts with their UserIDs and Names
-            print("UserID\tLast, First Name")
-            for contact in listContacts:
-                print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
-            print()
+            functions.print_all_contacts(listContacts)
 
             # Outputting choices to do with the contact list
             print("Which of the following would you like to do?")
@@ -92,6 +92,7 @@ while running:
 
             match menu_choice:
                 case 1:
+                    functions.print_all_contacts(listContacts)
                     menu_choice = input("Please enter the UserID of the contact whose "
                                         "information you would like to see: ")
                     print()
@@ -103,7 +104,17 @@ while running:
                     print("CONTACT INFO")
                     print("---------------------")
                     listContacts[menu_choice].contact_info()
-                    
+                    wait_to_continue = input("Press enter to continue: ")
+                    print()
+
+                case 2:
+                    menu_choice = input("Please enter the UserID of the contact whose "
+                                "information you would like to correct: ")
+                    print()
+
+                    # Validating menu_choice
+                    menu_choice = functions.menu_validation(menu_choice, 0,
+                                                            int(listContacts[len(listContacts) - 1].user_id))
 
                 case _:
                     print("Error in nested menu_choice from case 1 of primary menu_choice in primary while loop")
