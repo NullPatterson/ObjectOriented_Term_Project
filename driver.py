@@ -51,6 +51,11 @@ event_file.close()
 # Debug statement to check event_info()
 # listEvents[0].event_info()
 
+
+# FUNCTIONS
+    
+
+
 # Bool value to keep user interface open and that the application is running
 running = True
 # Value to track user menu choice.
@@ -78,7 +83,10 @@ while running:
     match menu_choice:
         case 1:
             # Outputting the list of contacts with their UserIDs and Names
-            functions.print_all_contacts(listContacts)
+            print("UserID\tLast, First Name")
+            for contact in listContacts:
+                print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
+            print()
 
             # Outputting choices to do with the contact list
             print("Which of the following would you like to do?")
@@ -93,7 +101,10 @@ while running:
 
             match menu_choice:
                 case 1:
-                    functions.print_all_contacts(listContacts)
+                    print("UserID\tLast, First Name")
+                    for contact in listContacts:
+                        print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
+                    print()
                     menu_choice = input("Please enter the UserID of the contact whose "
                                         "information you would like to see: ")
                     print()
@@ -109,7 +120,10 @@ while running:
                     print()
 
                 case 2:
-                    functions.print_all_contacts(listContacts)
+                    print("UserID\tLast, First Name")
+                    for contact in listContacts:
+                        print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
+                    print()
                     menu_choice = input("Please enter the UserID of the contact whose "
                                         "information you would like to see: ")
                     print()
@@ -134,6 +148,9 @@ while running:
 
                 case _:
                     print("Error in nested menu_choice from case 1 of primary menu_choice in primary while loop")
+
+        case 5:
+            running = False
 
         case _:
             print("Error in match menu_choice in primary while loop")

@@ -2,6 +2,8 @@
 # Date: 11/20/2023
 # Purpose: Define functions used in driver.py for the CSC2310-001 Term Project
 
+from contact import Contact
+
 # Function Name: menu_validation()
 # Purpose: Check a user input against a range of acceptable values
 # Parameters: choice, the menu choice made by the user; will be in the format of "x" where x is an integer
@@ -24,8 +26,6 @@ def menu_validation(choice, minval, maxval):
 # Purpose: Print the UserID and Last, First Name of all contacts in a list
 # Parameters: *contacts, a list of contacts
 # Returns: None
-def print_all_contacts(*contacts):
-    print("UserID\tLast, First Name")
-    for contact in contacts:
-        print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
-    print()
+
+
+#def print_all_events(*events):
