@@ -18,7 +18,7 @@ class Contact:
         self.__phone_number = phone_number
         self.__building = building
         self.__post_box = post_box
-        self.__last_communication = None  # YYYY-MM-DD
+        self.__last_communication = None # YYYY-MM-DD
 
     # Getters and Setters in case information needs to be updated
     @property
@@ -102,7 +102,20 @@ class Contact:
         self.__last_communication = last_communication
 
     # Method to output all relevant information about the contact
-    
+    def contact_info(self):
+        # \t used to align output arguments
+        print("First Name:\t\t\t", self.__first_name)
+        print("Last Name:\t\t\t", self.__last_name)
+        print("User ID:\t\t\t", self.__user_id)
+        print("Email Address:\t\t", self.__email_address)
+        print("Department:\t\t\t", self.__department)
+        print("Job Title:\t\t\t", self.__job_title)
+        print("Phone Number:\t\t", self.__phone_number)
+        print("Building:\t\t\t", self.__building)
+        print("Post Office Box:\t", self.__post_box)
+        if self.__last_communication != None:
+            print("Last Communication:\t", self.__last_communication)
+
 
 class Event:
     def __init__(self, eventname, eventid, date, starttime, location, duration):
@@ -137,9 +150,6 @@ for contact in contact_data:
     newContact = Contact(contact['FirstName'], contact['LastName'], contact['UID'], contact['EmailAddress'],
                          contact['Dept'], contact['Title'], contact['Phone'], contact['Building'], contact['POBox'])
 
-    # Debug Statement to check if Contacts were read in properly
-    # print("{0}: {1}".format(newContact.user_id, newContact.first_name))
-
     listContacts.append(newContact)
     # Debug Statements to check if Events were read in properly
     # print("{0}: {1}".format(listContacts[contactListIterator].user_id, listContacts[contactListIterator].first_name))
@@ -147,6 +157,9 @@ for contact in contact_data:
 # contactListIterator = 0  # Used to reset eventListIterator if used for debugging
 
 contact_file.close()
+
+# Debug Statement to see if all contact info is able to be outputted
+# listContacts[0].contact_info()
 
 # Reading data from events.json
 with open("events.json") as event_file:
