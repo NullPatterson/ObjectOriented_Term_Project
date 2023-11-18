@@ -9,7 +9,7 @@ class Event:
         self.__start_time = start_time  # Military time 00:00
         self.__location = location
         self.__duration = duration      # In hours
-        self.__action_items = ["1", "2"]
+        self.__action_items = []
 
     # Getters and Setters
     @property
