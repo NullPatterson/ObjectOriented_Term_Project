@@ -149,6 +149,89 @@ while running:
                 case _:
                     print("Error in nested menu_choice from case 1 of primary menu_choice in primary while loop")
 
+        case 2:
+            # Outputting a list of events and event id:
+            print("EventID\tEvent Name")
+            for event in listEvents:
+                print("{0}\t{1}".format(event.event_id, event.name))
+            print()
+
+            print("Which of the following would you like to do?")
+            print("1) View all information about an event")
+            print("2) Add action items to an event")
+            print("3) Return to main menu")
+            menu_choice = input("Please enter a value from 1 to 3: ")
+
+            # Validating menu_choice
+            menu_choice = functions.menu_validation(menu_choice, 1, 3)
+            print()
+
+            match menu_choice:
+                case 1:
+                    print("EventID\tEvent Name")
+                    for event in listEvents:
+                        print("{0}\t{1}".format(event.event_id, event.name))
+                    print()
+
+                    menu_choice = input("Please enter the EventID of the event "
+                                        "whose information you would like to see: ")
+
+                    menu_choice = functions.menu_validation(menu_choice, 0,
+                                                            listEvents[len(listEvents)-1].event_id)
+                    print()
+                    print("EVENT INFO")
+                    print("---------------")
+                    listEvents[menu_choice].event_info()
+                    wait_to_continue = input("Press enter to continue")
+                    print()
+
+                case 2:
+                    print("EventID\t\tEvent Name")
+                    for event in listEvents:
+                        print("{0}\t\t\t{1}".format(event.event_id, event.name))
+                    print()
+
+                    menu_choice = input("Please enter the EventID of the event you "
+                                        "would like to add action items to: ")
+                    menu_choice = functions.menu_validation(menu_choice, 0,
+                                                            listEvents[len(listEvents) - 1].event_id)
+                    adding_items = True
+                    while adding_items:
+                        eventIndex = menu_choice
+                        action_items = input("Please enter action items you would like to add to "
+                                             "\"{0}\" as a comma seperated list: ".format(listEvents[menu_choice].name))
+
+                        split_list = action_items.split(', ')
+                        print()
+                        print("The action items you would like to add are:")
+                        for item in split_list:
+                            print(" -", item)
+                        menu_choice = input("If these items are correct enter 1 otherwise enter 0: ")
+
+                        menu_choice = functions.menu_validation(menu_choice, 0, 1)
+                        print()
+
+                        if menu_choice == 1:
+                            adding_items = False
+                            listEvents[eventIndex].append_action_items(split_list)
+                            print("The action items were successfully added to \"{0}\""
+                                  .format(listEvents[eventIndex].name))
+                            print()
+
+                case 3:
+                    continue
+
+                case _:
+                    print("Error in primary case 2 in primary while loop")
+
+        case 3:
+            print("UserID\tLast, First Name")
+            for contact in listContacts:
+                print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
+            print()
+
+            
+
         case 5:
             running = False
 
