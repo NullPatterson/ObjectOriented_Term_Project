@@ -70,14 +70,12 @@ while running:
     print("Main Menu:")
     print("1) View your list of contacts")
     print("2) View your list of events")
-    print("3) Update the last date of communication for a contact")
-    print("4) Add action items to a given event")
-    print("5) Exit program")
-    menu_choice = input("Please enter a value from 1 to 5: ")
+    print("3) Exit program")
+    menu_choice = input("Please enter a value from 1 to 3: ")
     print()
 
     # Validating menu_choice
-    menu_choice = functions.menu_validation(menu_choice, 1, 5)
+    menu_choice = functions.menu_validation(menu_choice, 1, 3)
 
     # Following the chosen action
     match menu_choice:
@@ -225,14 +223,6 @@ while running:
                     print("Error in primary case 2 in primary while loop")
 
         case 3:
-            print("UserID\tLast, First Name")
-            for contact in listContacts:
-                print("{0}\t{1}, {2}".format(contact.user_id, contact.last_name, contact.first_name))
-            print()
-
-            
-
-        case 5:
             running = False
 
         case _:
@@ -243,6 +233,8 @@ while running:
         os.system('cls')
     else:
         os.systems('clear')
+
+
 
 print()
 print("Goodbye!")
