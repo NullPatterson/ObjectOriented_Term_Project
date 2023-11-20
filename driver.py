@@ -234,7 +234,5 @@ while running:
     else:
         os.systems('clear')
 
-
-
 print()
 print("Goodbye!")
