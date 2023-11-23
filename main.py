@@ -10,6 +10,7 @@ from event import Event
 import functions
 import os
 import platform
+import string
 
 # Iterators for the different list
 contactListIterator = 0
@@ -59,7 +60,7 @@ event_file.close()
 # Bool value to keep user interface open and that the application is running
 running = True
 # Value to track user menu choice.
-menu_choice = "0"
+menu_choice = 0
 # Used to pause the program until enter is pressed
 wait_to_continue = ""
 
@@ -134,10 +135,15 @@ while running:
                     new_date = input("Using the format \'YYYY-MM-DD\' Please enter the date of last "
                                      "communication with {0} {1}: ".format(listContacts[menu_choice].first_name,
                                                                            listContacts[menu_choice].last_name))
-                    listContacts[menu_choice].last_communication(new_date)
-                    print("The date of last communication with {0} {1} has been updated from {2} to {3}.".format(
-                        listContacts[menu_choice].first_name, listContacts[menu_choice].last_name,
-                        old_date, new_date))
+                    print(new_date)
+                    listContacts[menu_choice].last_communication = new_date
+                    if old_date == "0000-00-00":
+                        print("The date of last communication with {0} {1} has been updated to {2}".format(
+                            listContacts[menu_choice].first_name, listContacts[menu_choice].last_name, new_date))
+                    else:
+                        print("The date of last communication with {0} {1} has been updated from {2} to {3}.".format(
+                            listContacts[menu_choice].first_name, listContacts[menu_choice].last_name,
+                            old_date, new_date))
                     wait_to_continue = input("Press enter to continue: ")
                     print()
 
@@ -232,7 +238,7 @@ while running:
     if platform.system() == 'Windows':
         os.system('cls')
     else:
-        os.systems('clear')
+        os.system('clear')
 
 print()
 print("Goodbye!")

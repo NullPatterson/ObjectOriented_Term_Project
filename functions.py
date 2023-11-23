@@ -20,12 +20,3 @@ def menu_validation(choice, minval, maxval):
         choice = input()
         menu_validation(choice, minval, maxval)
     return int(choice)
-
-
-# Function Name: print_all_contacts()
-# Purpose: Print the UserID and Last, First Name of all contacts in a list
-# Parameters: *contacts, a list of contacts
-# Returns: None
-
-
-#def print_all_events(*events):

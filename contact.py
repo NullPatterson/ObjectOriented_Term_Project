@@ -12,7 +12,7 @@ class Contact:
         self.__phone_number = phone_number
         self.__building = building
         self.__post_box = post_box
-        self.__last_communication = None # YYYY-MM-DD
+        self._last_communication = "0000-00-00"  # YYYY-MM-DD
 
     # Getters and Setters in case information needs to be updated
     @property
@@ -89,11 +89,11 @@ class Contact:
 
     @property
     def last_communication(self):
-        return self.__last_communication
+        return self._last_communication
 
     @last_communication.setter
     def last_communication(self, last_communication):
-        self.__last_communication = last_communication
+        self._last_communication = last_communication
 
     # Method to output all relevant information about the contact
     def contact_info(self):
@@ -107,6 +107,6 @@ class Contact:
         print("Phone Number:\t\t", self.__phone_number)
         print("Building:\t\t\t", self.__building)
         print("Post Office Box:\t", self.__post_box)
-        if self.__last_communication != None:
-            print("Last Communication:\t", self.__last_communication)
+        if self._last_communication != None:
+            print("Last Communication:\t", self._last_communication)
         print()
